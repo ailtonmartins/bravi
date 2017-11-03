@@ -6,7 +6,7 @@ export default (req , res) => {
        people += "/"+req.params.id;
     }
     let peopleRef = db.database().ref(people);
-    peopleRef.orderByValue().limitToLast(3).on("value", function(snapshot) {
+    peopleRef.orderByValue().on("value", function(snapshot) {
         return res.json(snapshot);
     });
 }
