@@ -8,6 +8,7 @@ import remove from './services/remove';
 const router = express.Router();
 
 router.get('/', list)
+router.get('/:id', list)
 router.post('/', create)
 router.put('/:id', update)
 router.delete('/:id', remove)
