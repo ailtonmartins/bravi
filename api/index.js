@@ -6,11 +6,11 @@ import firebaseAdmin from 'firebase-admin';
 
 import routes from './routes';
 
-const app = express();
+let app = express();
 
-let serviceAccount = require("./bravi-91b8f-firebase-adminsdk-phdo4-4922ff84f7.json");
+const serviceAccount = require("./bravi-91b8f-firebase-adminsdk-phdo4-4922ff84f7.json");
 
-app.firebase = firebaseAdmin.initializeApp({
+export let db = firebaseAdmin.initializeApp({
     credential: firebaseAdmin.credential.cert(serviceAccount),
     databaseURL: "https://bravi-91b8f.firebaseio.com"
 });
