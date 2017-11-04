@@ -2,10 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { ClimaComponent } from './clima/clima.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ClimaComponent
   ],
   imports: [
     BrowserModule
