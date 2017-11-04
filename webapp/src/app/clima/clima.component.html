@@ -20,33 +20,29 @@
    </div>
 </nav>
 
-<div class="jumbotron">
+<div class="jumbotron text-center">
   <div class="container"  *ngIf="info">
-    <h1 class="display-3">City, !</h1>
+      <h1 class="display-4">City, {{info.city.name}} !</h1>
   </div>
   <div class="container" *ngIf="!info && !error" >
-    <div class="row">
-      <h2 class="col-12">Nenhuma Cidade encontrada</h2>
-    </div>
+      <h2 class="display-4">No City Found...</h2>
   </div>
   <div class="container" *ngIf="error" >
-    <div class="row">
-      <h2 class="col-12">A Cidade {{city}} não foi encontrada</h2>
-    </div>
+      <h2 class="display-4">City {{city}} was not found...</h2>
   </div>
 </div>
 
 <div class="container" *ngIf="info" >
   <div class="row">
-    <h2 class="col-12"><b>Longitude:</b></h2>
-    <h2 class="col-12"><b>longitude:</b></h2>
+    <h2 class="col-12 text-center mt-5 mb-5"><b>Longitude: {{info.city.coord.lon}} | longitude: {{info.city.coord.lat}}</b></h2>
   </div>
-  <div class="row">
-    <h4 class="col-12"><strong>Temperature</strong>:</h4><br>
-    <h4 class="col-12"><strong>Max:</strong></h4><br>
-    <h4 class="col-12"><strong>Min: </strong></h4><br>
-    <h4 class="col-12"> <strong>Weather Description:</strong></h4><br>
-    <h4 class="col-12"> <strong>Humidity:</strong></h4>
+  <div class="row" *ngFor="let item of info.list" class="jumbotron" >
+    <h4 class="col-12"><strong>Date</strong>: {{item.dt_txt}}</h4><br>
+    <h4 class="col-12"><strong>Temperature</strong>: {{item.main.temp}}</h4><br>
+    <h4 class="col-12"><strong>Max:</strong> {{item.main.temp_max}}</h4><br>
+    <h4 class="col-12"><strong>Min:</strong> {{item.main.temp_min}}</h4><br>
+    <h4 class="col-12"> <strong>Weather Description:</strong> {{item.weather[0].description}}</h4><br>
+    <h4 class="col-12"> <strong>Humidity:</strong> {{item.main.humidity}}</h4>
   </div>
 </div>
 

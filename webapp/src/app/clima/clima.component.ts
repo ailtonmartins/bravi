@@ -24,7 +24,6 @@ export class ClimaComponent implements OnInit {
     this.service.getWeather(this.code , this.city).subscribe(
                                                                (response) => {
                                                                  let data = response.json();
-                                                                 console.log(data);
                                                                  this.error = false;
                                                                  this.info = data;
                                                                  this.city = "";
