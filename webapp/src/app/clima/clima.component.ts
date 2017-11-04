@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClimaComponent implements OnInit {
 
+  private search:string;
+  private info: {};
+
   constructor() { }
 
   ngOnInit() {
+
+  }
+
+  actionSearch() {
+     console.log(this.search);
+     this.info = {teste:'oi'};
   }
 
 }
