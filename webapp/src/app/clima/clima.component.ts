@@ -1,24 +1,39 @@
 import { Component, OnInit } from '@angular/core';
+import {ClimaService} from "../services/clima.service";
 
 @Component({
   selector: 'app-clima',
   templateUrl: './clima.component.html',
-  styleUrls: ['./clima.component.css']
+  styleUrls: ['./clima.component.css'],
+  providers: [ClimaService]
 })
 export class ClimaComponent implements OnInit {
 
-  private search:string;
-  private info: {};
+  private code:string;
+  private city:string;
+  public  info:any;
+  public  error:boolean = false;
 
-  constructor() { }
+  constructor( public service:ClimaService ) { }
 
   ngOnInit() {
 
   }
 
   actionSearch() {
-     console.log(this.search);
-     this.info = {teste:'oi'};
+    this.service.getWeather(this.code , this.city).subscribe(
+                                                               (response) => {
+                                                                 let data = response.json();
+                                                                 console.log(data);
+                                                                 this.error = false;
+                                                                 this.info = data;
+                                                                 this.city = "";
+                                                                 this.code = "";
+                                                               },
+                                                               (erro) => {
+                                                                   this.error = true;
+                                                                   this.info = false;
+                                                               }
+                                                             );
   }
-
 }

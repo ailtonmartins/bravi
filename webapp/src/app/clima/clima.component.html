@@ -9,7 +9,12 @@
 
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" [(ngModel)]='search' name='search' placeholder="City or Code">
+      <input class="form-control mr-sm-2" type="text" [(ngModel)]='city' name='search' placeholder="City">
+      <select class="form-control mr-sm-2" [(ngModel)]='code' name='search' placeholder="Code">
+           <option value="" ></option>
+           <option value="BR"> BR </option>
+           <option value="US"> US </option>
+      </select>
       <button class="btn btn-outline-success my-2 my-sm-0" (click)="actionSearch()" type="button">Search</button>
     </form>
    </div>
@@ -19,9 +24,14 @@
   <div class="container"  *ngIf="info">
     <h1 class="display-3">City, !</h1>
   </div>
-  <div class="container" *ngIf="!info" >
+  <div class="container" *ngIf="!info && !error" >
     <div class="row">
-      <h2 class="col-12">Nenhum Cidade encontrada</h2>
+      <h2 class="col-12">Nenhuma Cidade encontrada</h2>
+    </div>
+  </div>
+  <div class="container" *ngIf="error" >
+    <div class="row">
+      <h2 class="col-12">A Cidade {{city}} não foi encontrada</h2>
     </div>
   </div>
 </div>
@@ -32,11 +42,11 @@
     <h2 class="col-12"><b>longitude:</b></h2>
   </div>
   <div class="row">
-    <h4 class="col-12"><strong>Temp</strong>:</h4><br>
-    <h4 class="col-12"><strong>tempMax:</strong></h4><br>
-    <h4 class="col-12"><strong>tempMin: </strong></h4><br>
-    <h4 class="col-12"> <strong>The weather description:</strong></h4><br>
-    <h4 class="col-12"> <strong>humidity :</strong></h4>
+    <h4 class="col-12"><strong>Temperature</strong>:</h4><br>
+    <h4 class="col-12"><strong>Max:</strong></h4><br>
+    <h4 class="col-12"><strong>Min: </strong></h4><br>
+    <h4 class="col-12"> <strong>Weather Description:</strong></h4><br>
+    <h4 class="col-12"> <strong>Humidity:</strong></h4>
   </div>
 </div>
 
